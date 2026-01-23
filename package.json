@@ -1,29 +1,29 @@
 {
-  "scripts": {
-    "postinstall": "node_modules/.bin/jspm install",
-    "serve": "node_modules/.bin/jspm-server site/"
-  },
-  "jspm": {
-    "directories": {
-      "baseURL": "site"
+    "scripts": {
+        "postinstall": "npx jspm install",
+        "serve": "npx http-server site/ -p 3000"
     },
-    "dependencies": {
-      "firebase": "github:firebase/firebase-bower@^2.3.1",
-      "json": "github:systemjs/plugin-json@^0.1.0",
-      "react": "npm:react@^0.14.0",
-      "react-redux": "npm:react-redux@^3.1.0",
-      "redux": "npm:redux@^3.0.2",
-      "tachyons": "npm:tachyons@^3.0.1",
-      "uuid": "npm:uuid@^2.0.1"
+    "jspm": {
+        "directories": {
+            "baseURL": "site"
+        },
+        "dependencies": {
+            "firebase": "github:firebase/firebase-bower@^2.3.1",
+            "json": "github:systemjs/plugin-json@^0.1.0",
+            "react": "npm:react@^0.14.0",
+            "react-redux": "npm:react-redux@^3.1.0",
+            "redux": "npm:redux@^3.0.2",
+            "tachyons": "npm:tachyons@^3.0.1",
+            "uuid": "npm:uuid@^2.0.1"
+        },
+        "devDependencies": {
+            "babel": "npm:babel-core@^5.8.22",
+            "babel-runtime": "npm:babel-runtime@^5.8.20",
+            "core-js": "npm:core-js@^1.1.0"
+        }
     },
     "devDependencies": {
-      "babel": "npm:babel-core@^5.8.22",
-      "babel-runtime": "npm:babel-runtime@^5.8.20",
-      "core-js": "npm:core-js@^1.1.0"
+        "jspm": "^4.2.0",
+        "http-server": "^14.1.1"
     }
-  },
-  "devDependencies": {
-    "jspm": "^0.16.12",
-    "jspm-server": "^0.1.8"
-  }
 }

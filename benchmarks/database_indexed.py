@@ -8,12 +8,16 @@ import sqlite3
 
 conn = sqlite3.connect('./indexed_db.sqlite')
 c = conn.cursor()
+
+
 def f(NUMBER):
     query = "select * from my_table where key = %d" % 5
-    for i in xrange(NUMBER):
+    for i in range(NUMBER):
         c.execute(query)
         c.fetchall()
 
+
 if __name__ == '__main__':
     import sys
+
     f(int(sys.argv[1]))

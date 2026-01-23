@@ -7,6 +7,7 @@ import hashlib
 CHUNK_SIZE = 10000
 s = 'a' * CHUNK_SIZE
 
+
 def f(NUMBER):
     bytes_hashed = 0
     h = hashlib.md5()
@@ -14,6 +15,9 @@ def f(NUMBER):
         h.update(s)
         bytes_hashed += CHUNK_SIZE
     h.digest()
+
+
 if __name__ == '__main__':
     import sys
+
     f(int(sys.argv[1]))

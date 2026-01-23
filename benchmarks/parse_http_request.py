@@ -6,6 +6,7 @@
 from BaseHTTPServer import BaseHTTPRequestHandler
 from StringIO import StringIO
 
+
 class HTTPRequest(BaseHTTPRequestHandler):
     def __init__(self, request_text):
         self.rfile = StringIO(request_text)
@@ -17,6 +18,7 @@ class HTTPRequest(BaseHTTPRequestHandler):
         self.error_code = code
         self.error_message = message
 
+
 request_text = """GET / HTTP/1.1
 Host: localhost:8001
 Connection: keep-alive
@@ -27,10 +29,13 @@ Accept-Encoding: gzip, deflate, sdch
 Accept-Language: en-GB,en-US;q=0.8,en;q=0.6
 """
 
+
 def f(NUMBER):
     for _ in range(NUMBER):
         HTTPRequest(request_text)
 
+
 if __name__ == '__main__':
     import sys
+
     f(int(sys.argv[1]))

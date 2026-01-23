@@ -105,7 +105,7 @@ const curriculum = [
             64K of data can take a millisecond (a LONG TIME, as we now know), and
             that your choice of format and library makes a big difference.
         `
-    },    {
+    }, {
         'text': `
             <p>
             DATABASES. We don't have anything fancy like PostgreSQL for you,

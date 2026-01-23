@@ -5,6 +5,7 @@
 
 import sys
 
+
 def divides(primes, number):
     for p in primes:
         if number % p == 0:
@@ -12,6 +13,7 @@ def divides(primes, number):
         if number < p * p:
             return False
     return False
+
 
 def f(NUMBER):
     primes = [2]
@@ -21,5 +23,6 @@ def f(NUMBER):
         if not divides(primes, current):
             primes.append(current)
     sys.stdout.write("%d " % primes[-1])
+
 
 f(int(sys.argv[1]))

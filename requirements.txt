@@ -1,7 +1,8 @@
-bcrypt==2.0.0
-cffi==1.2.1
-msgpack-python==0.4.6
-protobuf==2.6.1
-pycparser==2.14
-six==1.9.0
-wheel==0.24.0
+bcrypt>=4.0.0
+cffi>=1.15.0
+msgpack==1.1.2
+protobuf==6.31.1
+protobuf3-to-dict>=0.1.5
+pycparser>=2.21
+six>=1.16.0
+wheel>=0.40.0

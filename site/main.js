@@ -1,7 +1,7 @@
 import curriculum from 'curriculum'
 import React from 'react'
-import { createStore } from 'redux'
-import { connect, Provider } from 'react-redux'
+import {createStore} from 'redux'
+import {connect, Provider} from 'react-redux'
 import Firebase from 'firebase'
 import uuid from 'uuid'
 import benchmarks from './benchmarks.json!'
@@ -28,11 +28,11 @@ let answersRef = attemptRef.child("answers");
 // TODO: add a space for wrapup comments once people are done
 
 class Header extends React.Component {
-    render () {
-        let { selectedAnswers, benchmarks } = this.props;
+    render() {
+        let {selectedAnswers, benchmarks} = this.props;
         return (
             <div>
-                <ScoreCard selectedAnswers={selectedAnswers} benchmarks={benchmarks}/> 
+                <ScoreCard selectedAnswers={selectedAnswers} benchmarks={benchmarks}/>
             </div>
         );
 
@@ -42,7 +42,7 @@ class Header extends React.Component {
 // TODO: make this better: n questions left, x / y correct so far
 class ScoreCard extends React.Component {
     render() {
-        let { selectedAnswers, benchmarks } = this.props;
+        let {selectedAnswers, benchmarks} = this.props;
         var numCorrect = 0
         var numAnswered = 0
         var numRemaining = 0
@@ -56,31 +56,33 @@ class ScoreCard extends React.Component {
                 numRemaining += 1
             }
         })
-        return <span className="pos-abs bottom-0 bt left-0 teal bg-white w-100 pvs tc" style={{position: "fixed", zIndex: 999}}>
+        return <span className="pos-abs bottom-0 bt left-0 teal bg-white w-100 pvs tc"
+                     style={{position: "fixed", zIndex: 999}}>
             <b>Score:</b> <span className="v-sup">{numCorrect}</span> / <span className="v-sub">{numAnswered}</span>
             <span className="w1" style={{display: "inline-block"}}></span>
             <span> <b>Remaining:</b> {numRemaining} </span> 
-            <span> <b><a className="pos-abs-l mll mln-l right-2 teal pvs-l" href="/about.html">About this game</a></b></span>
+            <span> <b><a className="pos-abs-l mll mln-l right-2 teal pvs-l"
+                         href="/about.html">About this game</a></b></span>
         </span>;
     }
 }
 
 class QuizQuestion extends React.Component {
     render() {
-        let { code, name, units, selectedAnswer, rounded_iters:answer, exact_iters:exactAnswer, onChange } = this.props;
+        let {code, name, units, selectedAnswer, rounded_iters: answer, exact_iters: exactAnswer, onChange} = this.props;
         var answered = selectedAnswer !== undefined
         var correct = is_close(selectedAnswer, exactAnswer)
         var gradeGlyph = correct ? "✓" : "✗"
         return <div className="fl w-100 w-50-l mhm mhl-m mhn-l phm-l">
             <div className="pos-rel h2">
                 <h3 className="pos-abs left-0">{name} </h3>
-                <h3 className="pos-abs right-0 mrl">{answered ? gradeGlyph: ""}</h3>
+                <h3 className="pos-abs right-0 mrl">{answered ? gradeGlyph : ""}</h3>
             </div>
-            <AnswerSelector name={name} selectedAnswer={selectedAnswer} exactAnswer={exactAnswer} onChange={onChange} />
+            <AnswerSelector name={name} selectedAnswer={selectedAnswer} exactAnswer={exactAnswer} onChange={onChange}/>
             <div className="h1">
-            { selectedAnswer !== undefined ?
-                    <p> <b> Exact answer: </b>{english(exactAnswer)} </p>
-            : undefined }
+                {selectedAnswer !== undefined ?
+                    <p><b> Exact answer: </b>{english(exactAnswer)} </p>
+                    : undefined}
             </div>
             Guess: {units} in one second
             <pre className="f5 ofx-scr bg-near-white pas b--light-silver ba br2">{code}</pre>
@@ -95,26 +97,26 @@ function is_close(selectedAnswer, actualAnswer) {
 
 class AnswerSelector extends React.Component {
     render() {
-        let { name, onChange, selectedAnswer, exactAnswer } = this.props;
+        let {name, onChange, selectedAnswer, exactAnswer} = this.props;
         const options = [1, 10, 100, 1000, 10000, 100000,
             1000000, 10000000, 100000000, 100000000, 1000000000];
         return <ul>
-        { options.map(val => <AnswerChoice
+            {options.map(val => <AnswerChoice
                 key={val}
                 checked={val === selectedAnswer}
                 correct={is_close(val, exactAnswer)}
                 answered={selectedAnswer !== undefined}
                 name={name}
                 value={val}
-                onChange={() => onChange(val)} />)
-        }
+                onChange={() => onChange(val)}/>)
+            }
         </ul>;
     }
 }
 
 class AnswerChoice extends React.Component {
     render() {
-        let { value, name, onChange, checked, answered, correct } = this.props;
+        let {value, name, onChange, checked, answered, correct} = this.props;
         let id = `${name}-${value}`;
 
         // This is really messy and could be cleaned up. Intent is to have a
@@ -125,7 +127,7 @@ class AnswerChoice extends React.Component {
         let outerClassName = "dib br2 mrxs mlxs mvxs ba bw1";
 
         // This exists to override the colors set as part of the class.
-        let invisibleBorder = { borderColor: "rgba(0,0,0,0)" };
+        let invisibleBorder = {borderColor: "rgba(0,0,0,0)"};
         let outerStyle = checked ? {} : invisibleBorder;
 
         let innerStyle = checked ? invisibleBorder : {};
@@ -134,7 +136,7 @@ class AnswerChoice extends React.Component {
 
         if (checked) {
             outerClassName += " b--black-40";
-            className += " near-white b--black-40" ;
+            className += " near-white b--black-40";
         }
 
         if (!checked || !answered) {
@@ -161,7 +163,7 @@ class AnswerChoice extends React.Component {
                         {english(value)}
                     </label>
                     <input type="radio" className="dn" name={name} id={id} value={value}
-                        onChange={onChange} checked={checked}
+                           onChange={onChange} checked={checked}
                     />
                 </div>
             </div>
@@ -171,23 +173,23 @@ class AnswerChoice extends React.Component {
 
 class Section extends React.Component {
     render() {
-        let { onAnswerChange, text, programs, conclusion, finished } = this.props;
+        let {onAnswerChange, text, programs, conclusion, finished} = this.props;
         return <section className="mtxl ptl bdt">
             <div className="bg-light-gray pam br3 mhl mhxxl-l">
-            <div className="measure lh-copy f4 f3-l mw-75 center" dangerouslySetInnerHTML={{__html: text}}></div>
+                <div className="measure lh-copy f4 f3-l mw-75 center" dangerouslySetInnerHTML={{__html: text}}></div>
             </div>
             <div className="cf">
-            {programs.map(prog => <QuizQuestion
-                        onChange={answer => onAnswerChange(prog.name, answer)}
-                        key={prog.name}
-                        {...prog}
-                    />)}
+                {programs.map(prog => <QuizQuestion
+                    onChange={answer => onAnswerChange(prog.name, answer)}
+                    key={prog.name}
+                    {...prog}
+                />)}
             </div>
-            { (conclusion && finished) ? 
-              <div className="w-75 center f4 f3-l measure lh-copy">
-                  <h2 className="f4 f3-l teal">Now that you've guessed</h2><p> 
-              {conclusion} </p> </div>
-              : ""
+            {(conclusion && finished) ?
+                <div className="w-75 center f4 f3-l measure lh-copy">
+                    <h2 className="f4 f3-l teal">Now that you've guessed</h2><p>
+                    {conclusion} </p></div>
+                : ""
             }
         </section>;
     }
@@ -196,22 +198,22 @@ class Section extends React.Component {
 function getInitialState(curriculum) {
     var initialState = new Map()
     var allPrograms = {}
-    curriculum.map(({text, programs}, index) => Object.assign(allPrograms, programs)) 
+    curriculum.map(({text, programs}, index) => Object.assign(allPrograms, programs))
     for (var key in allPrograms) {
-      initialState.set(key, undefined);
+        initialState.set(key, undefined);
     }
     return initialState
 }
 
 class Quiz extends React.Component {
     render() {
-        let { dispatch, curriculum, benchmarks, selectedAnswers } = this.props;
+        let {dispatch, curriculum, benchmarks, selectedAnswers} = this.props;
         return <div className="mw-8">
             <Header
-                selectedAnswers={selectedAnswers} 
-                benchmarks = {benchmarks}/>
+                selectedAnswers={selectedAnswers}
+                benchmarks={benchmarks}/>
 
-            { curriculum.map(({text, programs, conclusion}, index) => {
+            {curriculum.map(({text, programs, conclusion}, index) => {
 
                 var finished = true
                 var programStates = []
@@ -231,25 +233,27 @@ class Quiz extends React.Component {
                     text={text}
                     finished={finished}
                     conclusion={conclusion}
-                    programs={programStates} />
-                })
+                    programs={programStates}/>
+            })
             }
-            <div className="h3"> </div>
+            <div className="h3"></div>
         </div>;
     }
 }
 
-let SmartQuiz = connect(state => {return {selectedAnswers: state}})(Quiz);
+let SmartQuiz = connect(state => {
+    return {selectedAnswers: state}
+})(Quiz);
 
 const SET_ANSWER = Symbol('setAnswer');
 
 function selectAnswer(program, answer) {
-    return { type: SET_ANSWER, program, answer };
+    return {type: SET_ANSWER, program, answer};
 }
 
-function questions(state=getInitialState(curriculum), action) {
+function questions(state = getInitialState(curriculum), action) {
     switch (action.type) {
-        case SET_ANSWER: 
+        case SET_ANSWER:
             if (state.get(action.program) !== undefined) {
                 return state
             } else {
@@ -262,7 +266,7 @@ function questions(state=getInitialState(curriculum), action) {
     }
 }
 
-var english = function(iters) {
+var english = function (iters) {
     var bil = Math.pow(10, 9)
     var mil = Math.pow(10, 6)
     var thousand = 1000
@@ -301,5 +305,5 @@ store.subscribe(() => {
 });
 
 React.render(<Provider store={store}>
-        {() => <SmartQuiz curriculum={curriculum} benchmarks={benchmarks}/>}
-        </Provider>, document.getElementById('quiz'));
+    {() => <SmartQuiz curriculum={curriculum} benchmarks={benchmarks}/>}
+</Provider>, document.getElementById('quiz'));

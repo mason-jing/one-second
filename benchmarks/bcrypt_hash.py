@@ -5,12 +5,15 @@
 
 import bcrypt
 
-password = 'a' * 100
+password = b'a' * 100
+
 
 def f(NUMBER):
-    for _ in xrange(NUMBER):
+    for _ in range(NUMBER):
         bcrypt.hashpw(password, bcrypt.gensalt())
-        
+
+
 if __name__ == '__main__':
     import sys
+
     f(int(sys.argv[1]))

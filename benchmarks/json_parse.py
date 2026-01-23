@@ -8,10 +8,13 @@ import json
 with open('./setup/protobuf/message.json') as f:
     message = f.read()
 
+
 def f(NUMBER):
-    for _ in xrange(NUMBER):
+    for _ in range(NUMBER):
         json.loads(message)
+
 
 if __name__ == '__main__':
     import sys
+
     f(int(sys.argv[1]))

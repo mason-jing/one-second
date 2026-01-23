@@ -21,7 +21,7 @@ def round_nearest_magnitude(x):
 
 def run_prog(prog, iters):
     subprocess.check_call([prog, str(iters)])
-     
+
 
 def benchmark(prog):
     source, binary = compile(prog)
@@ -33,21 +33,24 @@ def benchmark(prog):
         iters *= 1.1
         iters = int(math.ceil(iters))
         t = timeit.timeit(
-                'run_prog("%s", %d)' % (binary, iters,),
-                setup='from run_benchmarks import run_prog',
-                number=1)
+            'run_prog("%s", %d)' % (binary, iters,),
+            setup='from run_benchmarks import run_prog',
+            number=1)
 
     rounded_iters = round_nearest_magnitude(iters)
-    print "   rounded iterations:", rounded_iters
-    print "   exact iterations:  ", iters
-    print "   final time taken:  ", t
+    print
+    "   rounded iterations:", rounded_iters
+    print
+    "   exact iterations:  ", iters
+    print
+    "   final time taken:  ", t
     results = {
         'rounded_iters': rounded_iters,
         'exact_iters': iters,
     }
     with open(source) as f:
         results['code'] = f.read()
-    source_filename = source[11:] # remove benchmarks/
+    source_filename = source[11:]  # remove benchmarks/
     return {source_filename: results}
 
 
@@ -62,21 +65,26 @@ def compile(source):
 
 def run_benchmarks(benchmarks):
     for source in benchmarks:
-        print "----> " + source
+        print
+        "----> " + source
         yield benchmark(source)
+
 
 def find_all_benchmarks():
     return glob.glob("benchmarks/*.*")
 
+
 def write_json(results):
     j = json.dumps(results, sort_keys=True,
-      indent=4, separators=(',', ': '))
+                   indent=4, separators=(',', ': '))
     with open(OUTPUT_FILE, 'w') as f:
         f.write(j)
+
 
 def read_json():
     with open(OUTPUT_FILE) as f:
         return json.load(f)
+
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

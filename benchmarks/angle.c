@@ -6,7 +6,7 @@
 // N dimensions and calculate their dot product. How big
 // can we make N in a second?
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     int NUMBER, i;
     double sum1 = 0;
     double sum2 = 0;
@@ -31,8 +31,8 @@ int main(int argc, char **argv) {
     double dot_product = 0;
     for (i = 0; i < NUMBER; ++i) {
         // We normalize the vectors to unit vectors here
-        double x1 = ((double) arr1[i]) / norm1;
-        double x2 = ((double) arr2[i]) / norm2;
+        double x1 = ((double)arr1[i]) / norm1;
+        double x2 = ((double)arr2[i]) / norm2;
         dot_product += x1 * x2;
     }
 

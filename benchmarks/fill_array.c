@@ -7,7 +7,7 @@
 // this is intentionally more complicated than it needs to be
 // so that it matches the out-of-order version :)
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     int NUMBER, i;
     NUMBER = atoi(argv[1]);
 

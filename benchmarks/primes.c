@@ -19,7 +19,7 @@ bool divides(int* primes, int size, int number) {
     return false;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     int NUMBER, i;
     NUMBER = atoi(argv[1]);
     int* primes = malloc(NUMBER * sizeof(int));

@@ -9,7 +9,7 @@
 
 char* primes_sieve(int limit) {
     char* a = malloc(sizeof(char) * limit);
-    double sqrt_limit =  sqrt(limit);
+    double sqrt_limit = sqrt(limit);
     memset(a, 1, limit);
     a[0] = a[1] = 0;
     for (long i = 0; i < sqrt_limit; ++i) {
@@ -23,7 +23,7 @@ char* primes_sieve(int limit) {
     return a;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, char** argv) {
     int NUMBER, i;
     NUMBER = atoi(argv[1]);
     char* sieve = primes_sieve(NUMBER);
