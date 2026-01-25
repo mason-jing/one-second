@@ -9,7 +9,8 @@
 
 import time
 
-def f(NUMBER):
+
+def f(NUMBER: int) -> None:
     for _ in range(NUMBER):
         pass
 
@@ -17,14 +18,14 @@ def f(NUMBER):
 if __name__ == '__main__':
     import sys
 
-    iterations = int(sys.argv[1])
+    iterations: int = int(sys.argv[1])
 
-    start = time.perf_counter()
+    start: float = time.perf_counter()
     f(iterations)
-    end = time.perf_counter()
+    end: float = time.perf_counter()
 
-    elapsed = end - start
-    rate = iterations / elapsed
+    elapsed: float = end - start
+    rate: float = iterations / elapsed
 
     print(f"Iterations: {iterations:,}")
     print(f"Time: {elapsed:.6f} seconds")
