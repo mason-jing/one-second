@@ -2,9 +2,9 @@
 
 # Number to guess: How many HTTP requests can we parse in a second?
 
-# Iterations: 100,000
+# Requests: 100,000
 # Time: 2.446060 seconds
-# Rate: 40,882 iterations/second
+# Rate: 40,882 requests/second
 
 
 import time
@@ -44,15 +44,15 @@ def f(NUMBER: int) -> None:
 if __name__ == '__main__':
     import sys
 
-    iterations: int = int(sys.argv[1])
+    requests: int = int(sys.argv[1])
 
     start: float = time.perf_counter()
-    f(iterations)
+    f(requests)
     end: float = time.perf_counter()
 
     elapsed: float = end - start
-    rate: float = iterations / elapsed
+    rate: float = requests / elapsed
 
-    print(f"Iterations: {iterations:,}")
+    print(f"Requests: {requests:,}")
     print(f"Time: {elapsed:.6f} seconds")
-    print(f"Rate: {rate:,.0f} iterations/second")
+    print(f"Rate: {rate:,.0f} requests/second")

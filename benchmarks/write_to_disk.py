@@ -3,9 +3,9 @@
 # Number to guess: How many bytes can we write to an output file in a second?
 # Note: we make sure everything is sync'd to disk before exiting :)
 
-# Iterations: 1,000,000,000
+# Bytes: 1,000,000,000
 # Time: 1.320435 seconds
-# Rate: 757,326,012 iterations/second
+# Rate: 757,326,012 bytes/second
 
 
 import time
@@ -39,15 +39,15 @@ def f(NUMBER: int) -> None:
 if __name__ == '__main__':
     import sys
 
-    iterations: int = int(sys.argv[1])
+    num_bytes: int = int(sys.argv[1])
 
     start: float = time.perf_counter()
-    f(iterations)
+    f(num_bytes)
     end: float = time.perf_counter()
 
     elapsed: float = end - start
-    rate: float = iterations / elapsed
+    rate: float = num_bytes / elapsed
 
-    print(f"Iterations: {iterations:,}")
+    print(f"Bytes: {num_bytes:,}")
     print(f"Time: {elapsed:.6f} seconds")
-    print(f"Rate: {rate:,.0f} iterations/second")
+    print(f"Rate: {rate:,.0f} bytes/second")

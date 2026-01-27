@@ -2,9 +2,9 @@
 
 # Number to guess: How many bytes can we write to a string in memory in a second?
 
-# Iterations: 2,000,000,000
+# Bytes: 2,000,000,000
 # Time: 1.155849 seconds
-# Rate: 1,730,330,276 iterations/second
+# Rate: 1,730,330,276 bytes/second
 
 
 import time
@@ -25,15 +25,15 @@ def f(NUMBER: int) -> None:
 if __name__ == '__main__':
     import sys
 
-    iterations: int = int(sys.argv[1])
+    num_bytes: int = int(sys.argv[1])
 
     start: float = time.perf_counter()
-    f(iterations)
+    f(num_bytes)
     end: float = time.perf_counter()
 
     elapsed: float = end - start
-    rate: float = iterations / elapsed
+    rate: float = num_bytes / elapsed
 
-    print(f"Iterations: {iterations:,}")
+    print(f"Bytes: {num_bytes:,}")
     print(f"Time: {elapsed:.6f} seconds")
-    print(f"Rate: {rate:,.0f} iterations/second")
+    print(f"Rate: {rate:,.0f} bytes/second")

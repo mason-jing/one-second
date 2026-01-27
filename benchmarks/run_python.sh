@@ -25,9 +25,9 @@ alias python=/usr/bin/python3
 
 # Number to guess: How many times can we start the Python interpreter in a second?
 
-# Iterations: 200
+# Interpreters: 200
 # Time: 1.592725 seconds
-# Rate: 125 iterations/second
+# Rate: 125 interpreters/second
 
 
 NUMBER="$1"
@@ -52,10 +52,10 @@ elapsed_sec=$((elapsed_ns / 1000000000))          # Integer seconds
 elapsed_subsec_ns=$((elapsed_ns % 1000000000))    # Remaining nanoseconds
 elapsed_microsec=$((elapsed_subsec_ns / 1000))    # Convert to microseconds (6 decimal places)
 
-# Calculate rate (iterations per second) - multiply by 1000000000 to avoid decimals
+# Calculate rate (interpreters per second) - multiply by 1000000000 to avoid decimals
 # Then divide to get the final rate
 rate=$(( (NUMBER * 1000000000) / elapsed_ns ))
 
-printf "Iterations: %'d\n" "$NUMBER"
+printf "Interpreters: %'d\n" "$NUMBER"
 printf "Time: %d.%06d seconds\n" "$elapsed_sec" "$elapsed_microsec"
-printf "Rate: %'d iterations/second\n" "$rate"
+printf "Rate: %'d interpreters/second\n" "$rate"

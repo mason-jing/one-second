@@ -2,9 +2,9 @@
 
 # Number to guess: How many times can we download google.com in a second?
 
-# Iterations: 10
+# Downloads: 10
 # Time: 2.454081 seconds
-# Rate: 4 iterations/second
+# Rate: 4 downloads/second
 
 
 import time
@@ -20,15 +20,15 @@ def f(NUMBER: int) -> None:
 if __name__ == '__main__':
     import sys
 
-    iterations: int = int(sys.argv[1])
+    downloads: int = int(sys.argv[1])
 
     start: float = time.perf_counter()
-    f(iterations)
+    f(downloads)
     end: float = time.perf_counter()
 
     elapsed: float = end - start
-    rate: float = iterations / elapsed
+    rate: float = downloads / elapsed
 
-    print(f"Iterations: {iterations:,}")
+    print(f"Downloads: {downloads:,}")
     print(f"Time: {elapsed:.6f} seconds")
-    print(f"Rate: {rate:,.0f} iterations/second")
+    print(f"Rate: {rate:,.0f} downloads/second")
