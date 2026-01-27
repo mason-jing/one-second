@@ -50,7 +50,7 @@
         "rounded_iters": 1000000
     },
     "grep_bytes.sh": {
-        "code": "#!/bin/bash \n\n# Number to guess: How many bytes can `grep`\n# search, unsuccessfully, in a second?\n# Note: the bytes are in memory\n\n\nNUMBER=$1\n\ncat /dev/zero | head -c $NUMBER | grep blah\nexit 0\n",
+        "code": "#!/bin/bash \n\n# Number to guess: How many bytes can `grep`\n# search, unsuccessfully, in a second?\n# Note: the bytes are in memory\n\n\nNUMBER=$1\n\nhead -c $NUMBER < /dev/zero | grep blah\nexit 0\n",
         "exact_iters": 1570440581,
         "rounded_iters": 1000000000
     },
