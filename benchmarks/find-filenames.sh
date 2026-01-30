@@ -3,9 +3,10 @@
 # Number to guess: How many files can `find` list in a second?
 # Note: the files will be in the filesystem cache.
 
-# Files: 100,000
-# Time: 2.718258 seconds
-# Rate: 36,788 files/second
+# Results from Johnathon's desktop:
+# Files: 400,000
+# Time: 0.457816 seconds
+# Rate: 873,712 files/second
 
 
 NUMBER="$1"
