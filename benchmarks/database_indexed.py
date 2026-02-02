@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
-# Number to guess: How many times can we
-# select a row from an **indexed** table with 
-# 10,000,000 rows?
+# Number to guess: How many times can we select a row from an **indexed** table with 10,000,000 rows?
+
 
 import sqlite3
 
@@ -12,7 +11,7 @@ c = conn.cursor()
 
 def f(NUMBER):
     query = "select * from my_table where key = %d" % 5
-    for i in range(NUMBER):
+    for _ in range(NUMBER):
         c.execute(query)
         c.fetchall()
 
