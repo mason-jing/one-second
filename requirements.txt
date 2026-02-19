@@ -6,3 +6,5 @@ protobuf3-to-dict>=0.1.5
 pycparser>=2.21
 six>=1.16.0
 wheel>=0.40.0
+
+msgpack-python
