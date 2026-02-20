@@ -1,0 +1,116 @@
+sum.c
+    Number to guess: How many iterations of this loop can we go through in a second?
+
+    Iterations: 10,000,000,000
+    Time: 3.403000 seconds
+    Rate: 2,938,583,603 iterations/second
+
+loop.py:
+    Number to guess: How many iterations of an empty loop can we go through in a second?
+
+    Iterations: 100,000,000
+    Time: 1.414549 seconds
+    Rate: 70,693,885 iterations/second
+
+dict.py:
+    Number to guess: How many entries can we add to a dictionary of a fixed maximum size in a second?
+
+    Entries: 50,000,000
+    Time: 2.487682 seconds
+    Rate: 20,099,035 entries/second
+
+parse_http_request.py:
+    Number to guess: How many HTTP requests can we parse in a second?
+
+    Requests: 100,000
+    Time: 2.446060 seconds
+    Rate: 40,882 requests/second
+
+download_webpage.py:
+    Number to guess: How many times can we download google.com in a second?
+
+    Downloads: 10
+    Time: 2.454081 seconds
+    Rate: 4 downloads/second
+
+run_python.sh:
+    Number to guess: How many times can we start the Python interpreter in a second?
+
+    Interpreters: 200
+    Time: 1.592725 seconds
+    Rate: 125 interpreters/second
+
+write_to_disk.py:
+    Number to guess: How many bytes can we write to an output file in a second?
+    Note: we make sure everything is sync'd to disk before exiting :)
+
+    Bytes: 1,000,000,000
+    Time: 1.320435 seconds
+    Rate: 757,326,012 bytes/second
+
+write_to_memory.py:
+    Number to guess: How many bytes can we write to a string in memory in a second?
+
+    Bytes: 2,000,000,000
+    Time: 1.155849 seconds
+    Rate: 1,730,330,276 bytes/second
+
+grep_bytes.sh:
+    Number to guess: How many bytes can `grep` search, unsuccessfully, in a second?
+    Note: the bytes are in memory
+
+    Bytes: 5,000,000,000
+    Time: 1.837374 seconds
+    Rate: 2,721,274,561 bytes/second
+
+find_filenames.sh:
+    Number to guess: How many files can `find` list in a second?
+    Note: the files will be in the filesystem cache.
+
+    Files: 400,000
+    Time: 0.457816 seconds
+    Rate: 873,712 files/second
+
+json_parse.py:
+    Number to guess: How many times can we parse 64KB of JSON in a second?
+
+    Iterations: 5,000
+    Time: 1.041663 seconds
+    Rate: 4,800 iterations/second
+
+msgpack_parse.py:
+    Number to guess: How many times can we parse 46KB of msgpack data in a second?
+
+    Iterations: 5,000
+    Time: 1.231749 seconds
+    Rate: 4,059 iterations/second
+
+hash.py:
+    Number to guess: How many bytes can we md5sum in a second?
+
+    Bytes: 2,000,000,000
+    Time: 1.939694 seconds
+    Rate: 1,031,090,737 bytes/second
+
+bcrypt_hash.py:
+    Number to guess: How many passwords can we bcrypt in a second?
+
+    Passwords: 20
+    Time: 3.474833 seconds
+    Rate: 6 passwords/second
+
+fill_array.c
+    Number to guess: How big of an array (in bytes) can we allocate and fill in a second?
+    This is intentionally more complicated than it needs to be so that it matches the out-of-order version :)
+
+    Bytes: 500,000,000
+    Time: 2.029000 seconds
+    Rate: 246,426,811 bytes/second
+
+fill_array_out_of_order.c
+    Number to guess: How big of an array (in bytes) can we allocate and fill in a second?
+    The catch: We do it out of order instead of in order.
+
+    Bytes: 100,000,000
+    Time: 1.214000 seconds
+    Rate: 82,372,323 bytes/second
