@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 # Number to guess: How many one-element lists can we make in a second?
 
 # Lists: 100,000,000
