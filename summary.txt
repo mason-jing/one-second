@@ -114,3 +114,10 @@ fill_array_out_of_order.c
     Bytes: 100,000,000
     Time: 1.214000 seconds
     Rate: 82,372,323 bytes/second
+
+run_bin_true.sh
+    Number to guess: How many times can we execute the `true` command in a second?
+
+    Commands: 5,000
+    Time: 3.022517 seconds
+    Rate: 1,654 commands/second
