@@ -121,3 +121,24 @@ run_bin_true.sh
     Commands: 5,000
     Time: 3.022517 seconds
     Rate: 1,654 commands/second
+
+make_empty_list.py
+    Number to guess: How many empty lists can we make in a second?
+
+    Lists: 100,000,000
+    Time: 2.121877 seconds
+    Rate: 47,128,094 lists/second
+
+make_one_elt_list.py
+    Number to guess: How many one-element lists can we make in a second?
+
+    Lists: 100,000,000
+    Time: 3.542389 seconds
+    Rate: 28,229,533 lists/second
+
+make_four_elt_list.py
+    Number to guess: How many four-element lists can we make in a second?
+
+    Lists: 100,000,000
+    Time: 4.104362 seconds
+    Rate: 24,364,325 lists/second
